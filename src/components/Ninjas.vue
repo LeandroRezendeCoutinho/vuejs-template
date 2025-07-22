@@ -1,8 +1,10 @@
 <template>
-  <div>
-    <h1>List of Ninjas</h1>
+  <div id="ninjas">
     <ul>
-      <li v-for="ninja in ninjas">{{ ninja }}</li>
+      <li v-for="ninja in ninjas" v-on:click="ninja.show = !ninja.show">
+        <h2>{{ ninja.name }}</h2>
+        <h3 v-show="ninja.show">{{ ninja.speciality }}</h3>
+      </li>
     </ul>
   </div>
 </template>
@@ -11,14 +13,32 @@
 export default {
   data () {
     return {
-      ninjas: ['Yoshi', 'Mario', 'Luigi'],
+      ninjas: [
+        {name: 'Ryu', speciality: 'Vue Components', show: false},
+        {name: 'Crystal', speciality: 'HTML Wizardry', show: false},
+        {name: 'Hitoshi', speciality: 'Click Events', show: false},
+        {name: 'Tango', speciality: 'Conditionals in Vue', show: false},
+        {name: 'Kami', speciality: 'Webpack', show: false}, 
+        {name: 'Yoshi', speciality: 'Data Diggin', show: false}
+      ]
     }
   }
 }
 </script>
 
 <style scoped>
-h1 {
-  color: purple
+ul {
+  display: flex;
+  flex-wrap: wrap;
+  list-style-type: none;
+  padding: 0;
+}
+li {
+  flex-grow: 1;
+  flex-basis: 300px;
+  text-align: center;
+  padding: 30px;
+  border: 1px solid #222;
+  margin: 10px;
 }
 </style>
