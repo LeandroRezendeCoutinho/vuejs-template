@@ -1,7 +1,7 @@
 <template>
   <div id="ninjas">
     <ul>
-      <li v-for="ninja in ninjas" v-on:click="ninja.show = !ninja.show">
+      <li v-bind:key="ninja.name" v-for="ninja in ninjas" v-on:click="ninja.show = !ninja.show">
         <h2>{{ ninja.name }}</h2>
         <h3 v-show="ninja.show">{{ ninja.speciality }}</h3>
       </li>
