@@ -3,6 +3,10 @@
     <app-header v-bind:title="title" v-on:changeTitle="updateTitle($event)"></app-header>
     <app-ninjas v-bind:ninjas="ninjas"></app-ninjas>
     <app-footer v-bind:title="title"></app-footer>
+    <form-helper>
+      <h1 slot="title">Form App</h1>
+      <p slot="subtitle">This is a form helper</p>
+    </form-helper>
   </div>
 </template>
 
@@ -10,12 +14,14 @@
 import Header from './components/Header.vue'
 import Footer from './components/Footer.vue'
 import Ninjas from './components/Ninjas.vue'
+import FormHelper from './components/FormHelper.vue'
 
 export default {
   components: {
     'app-header': Header,
     'app-footer': Footer,
-    'app-ninjas': Ninjas
+    'app-ninjas': Ninjas,
+    'form-helper': FormHelper
   },
   data () {
     return {
