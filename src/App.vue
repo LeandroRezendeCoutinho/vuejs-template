@@ -7,6 +7,19 @@
       <h1 slot="title">Slots</h1>
       <p slot="subtitle">This is a named slot</p>
     </slots>
+    <form-helper>
+      <div slot="form-header">
+        <h3>Form Header Slot</h3>
+        <p>This is a form header</p>
+      </div>
+      <div slot="form-fields">
+        <input type="text" name="name" required>
+        <input type="password" name="password" required>
+      </div>
+      <div slot="form-controls">
+        <button v-on:click="handleSubmit">Submit</button>
+      </div>
+    </form-helper>
   </div>
 </template>
 
