@@ -20,7 +20,9 @@
         <button v-on:click="handleSubmit">Submit</button>
       </div>
     </form-helper>
-    <component v-bind:is="component"></component>
+    <keep-alive>
+      <component v-bind:is="component"></component>
+    </keep-alive>
     <button v-on:click="component = 'form-one'">Form one</button>
     <button v-on:click="component = 'form-two'">Form two</button>
   </div>
