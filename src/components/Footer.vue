@@ -1,6 +1,6 @@
 <template>
     <footer>
-        <p>{{ title }}</p>
+        <p>{{ footerTitle }}</p>
     </footer>
 </template>
 
@@ -9,7 +9,7 @@ import { bus } from '../main';
 
 export default {
     props: {
-        title: {
+        footerTitle: {
             type: String
         }
     },
@@ -20,7 +20,7 @@ export default {
     },
     created() {
         bus.$on('titleChanged', (title) => {
-            this.title = title
+            this.footerTitle = title
         })
     }
 }

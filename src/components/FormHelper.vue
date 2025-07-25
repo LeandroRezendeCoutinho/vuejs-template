@@ -1,6 +1,6 @@
 <template>
   <div class="form-helper">
-    <h1>Form Helper</h1>
+    <h1>{{ title }}</h1>
     <form>
       <div id="form-header">
         <slot name="form-header"></slot>
@@ -24,8 +24,10 @@
 <script>
 export default {
   data() {
-    return {};
-  },
+    return {
+      title: "Form Helper"
+    }
+  }
 };
 </script>
 

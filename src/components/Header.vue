@@ -1,6 +1,6 @@
 <template>
     <header>
-        <h1 v-on:click="changeTitle">{{ title }}</h1>
+        <h1 v-on:click="changeTitle">{{ headerTitle }}</h1>
     </header>
 </template>
 
@@ -9,7 +9,7 @@ import { bus } from '../main';
 
 export default {
     props: {
-        title: {
+        headerTitle: {
             type: String,
         }
     },
@@ -20,7 +20,7 @@ export default {
     },
     methods: {
         changeTitle: function() {
-            this.title = 'Vue updated!';
+            this.headerTitle = this.title;
             bus.$emit('titleChanged', 'Vue updated!');
         }
     }

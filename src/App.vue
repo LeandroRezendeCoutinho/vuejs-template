@@ -1,8 +1,8 @@
 <template>
   <div>
-    <app-header v-bind:title="title" v-on:changeTitle="updateTitle($event)"></app-header>
+    <app-header v-bind:headerTitle="title" v-on:changeTitle="updateTitle($event)"></app-header>
     <app-ninjas v-bind:ninjas="ninjas"></app-ninjas>
-    <app-footer v-bind:title="title"></app-footer>
+    <app-footer v-bind:footerTitle="title"></app-footer>
     <slots>
       <h1 slot="title">Slots</h1>
       <p slot="subtitle">This is a named slot</p>
@@ -20,6 +20,9 @@
         <button v-on:click="handleSubmit">Submit</button>
       </div>
     </form-helper>
+    <component v-bind:is="component"></component>
+    <button v-on:click="component = 'form-one'">Form one</button>
+    <button v-on:click="component = 'form-two'">Form two</button>
   </div>
 </template>
 
@@ -29,6 +32,8 @@ import Footer from './components/Footer.vue'
 import Ninjas from './components/Ninjas.vue'
 import slots from './components/slots.vue'
 import FormHelper from './components/FormHelper.vue'
+import FormOne from './components/FormOne.vue'
+import FormTwo from './components/FormTwo.vue'
 
 export default {
   components: {
@@ -37,6 +42,8 @@ export default {
     'app-ninjas': Ninjas,
     'slots': slots,
     'form-helper': FormHelper,
+    'form-one': FormOne,
+    'form-two': FormTwo
   },
   data () {
     return {
@@ -48,12 +55,16 @@ export default {
         {name: 'Kami', speciality: 'Webpack', show: false}, 
         {name: 'Yoshi', speciality: 'Data Diggin', show: false}
       ],
-      title: 'Vue Ninjas'
+      title: 'Vue Ninjas',
+      component: 'form-two'
     }
   },
   methods: {
     updateTitle(title) {
       this.title = title;
+    },
+    handleSubmit() {
+      console.log('submitted');
     }
   }
 }
