@@ -25,6 +25,7 @@
     </keep-alive>
     <button v-on:click="component = 'form-one'">Form one</button>
     <button v-on:click="component = 'form-two'">Form two</button>
+    <add-blog></add-blog>
   </div>
 </template>
 
@@ -36,6 +37,7 @@ import slots from './components/slots.vue'
 import FormHelper from './components/FormHelper.vue'
 import FormOne from './components/FormOne.vue'
 import FormTwo from './components/FormTwo.vue'
+import AddBlog from './components/AddBlog.vue'
 
 export default {
   components: {
@@ -45,17 +47,18 @@ export default {
     'slots': slots,
     'form-helper': FormHelper,
     'form-one': FormOne,
-    'form-two': FormTwo
+    'form-two': FormTwo,
+    'add-blog': AddBlog
   },
-  data () {
+  data() {
     return {
       ninjas: [
-        {name: 'Ryu', speciality: 'Vue Components', show: false},
-        {name: 'Crystal', speciality: 'HTML Wizardry', show: false},
-        {name: 'Hitoshi', speciality: 'Click Events', show: false},
-        {name: 'Tango', speciality: 'Conditionals in Vue', show: false},
-        {name: 'Kami', speciality: 'Webpack', show: false}, 
-        {name: 'Yoshi', speciality: 'Data Diggin', show: false}
+        { name: 'Ryu', speciality: 'Vue Components', show: false },
+        { name: 'Crystal', speciality: 'HTML Wizardry', show: false },
+        { name: 'Hitoshi', speciality: 'Click Events', show: false },
+        { name: 'Tango', speciality: 'Conditionals in Vue', show: false },
+        { name: 'Kami', speciality: 'Webpack', show: false },
+        { name: 'Yoshi', speciality: 'Data Diggin', show: false }
       ],
       title: 'Vue Ninjas',
       component: 'form-two'
@@ -72,6 +75,4 @@ export default {
 }
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>
