@@ -16,6 +16,12 @@
         <label>Cheese</label>
         <input type="checkbox" value="cheese" v-model="blog.categories" />
       </div>
+      <label>Author:</label>
+      <select v-model="blog.author">
+        <option v-for="author in blog.authors" v-bind:key="author">
+          {{ author }}
+        </option>
+      </select>
     </form>
     <form id="preview">
       <h3>Preview Blog</h3>
@@ -46,8 +52,9 @@ export default {
         title: '',
         content: '',
         categories: [],
-        author: 'The Net Ninja'
-      }
+        author: 'The Net Ninja',
+        authors: ['The Net Ninja', 'Ryu', 'Chun-Li', 'Yoshi']
+      },
     }
   },
   methods: {
