@@ -1,7 +1,7 @@
 <template>
   <div id="add-blog">
     <h2>Add a New Blog Post</h2>
-    <form action="">
+    <form v-if="!submitted">
       <label>Blog title:</label>
       <input type="text" v-model="blog.title" required />
       <label>Blog content:</label>
@@ -22,7 +22,12 @@
           {{ author }}
         </option>
       </select>
+      <button v-on:click.prevent="submitBlogPost">Submit</button>
     </form>
+    <div v-if="submitted">
+      <h3>Blog Submitted</h3>
+      <p>Thank you for your submission!</p>
+    </div>
     <form id="preview">
       <h3>Preview Blog</h3>
       <p>Blog title: {{ blog.title }}</p>
@@ -55,9 +60,30 @@ export default {
         author: 'The Net Ninja',
         authors: ['The Net Ninja', 'Ryu', 'Chun-Li', 'Yoshi']
       },
+      submitted: false
     }
   },
   methods: {
+    submitBlogPost() {
+      this.$http.post('https://jsonplaceholder.typicode.com/posts', {
+        title: this.blog.title,
+        body: this.blog.content,
+        userId: 1,
+      })
+        .then(response => {
+          console.log(response);
+          this.submitted = true;
+        })
+        .catch(error => {
+          console.error('Error submitting blog post:', error);
+        });
+    },
+    resetForm() {
+      this.blog.title = '';
+      this.blog.content = '';
+      this.blog.categories = [];
+      this.blog.author = 'The Net Ninja';
+    }
 
   }
 }
