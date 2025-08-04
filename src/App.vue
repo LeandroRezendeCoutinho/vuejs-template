@@ -26,6 +26,7 @@
     <button v-on:click="component = 'form-one'">Form one</button>
     <button v-on:click="component = 'form-two'">Form two</button>
     <add-blog></add-blog>
+    <show-blogs></show-blogs>
   </div>
 </template>
 
@@ -38,6 +39,7 @@ import FormHelper from './components/FormHelper.vue'
 import FormOne from './components/FormOne.vue'
 import FormTwo from './components/FormTwo.vue'
 import AddBlog from './components/AddBlog.vue'
+import ShowBlogs from './components/ShowBlogs.vue'
 
 export default {
   components: {
@@ -48,7 +50,8 @@ export default {
     'form-helper': FormHelper,
     'form-one': FormOne,
     'form-two': FormTwo,
-    'add-blog': AddBlog
+    'add-blog': AddBlog,
+    'show-blogs': ShowBlogs
   },
   data() {
     return {
