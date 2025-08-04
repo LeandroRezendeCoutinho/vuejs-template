@@ -1,10 +1,10 @@
 <template>
-  <div id="show-blogs">
+  <div v-theme:column="'wide'" id="show-blogs">
     <h2>All Blog Posts</h2>
     <ul>
       <li v-for="post in posts.slice(0, 3)" :key="post.id">
-          <h3>{{ post.title }}</h3>
-          <p>{{ post.body }}</p>
+        <h3 v-rainbow>{{ post.title }}</h3>
+        <p>{{ post.body }}</p>
       </li>
     </ul>
   </div>
