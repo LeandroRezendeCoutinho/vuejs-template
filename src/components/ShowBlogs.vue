@@ -3,8 +3,8 @@
     <h2>All Blog Posts</h2>
     <ul>
       <li v-for="post in posts.slice(0, 3)" :key="post.id">
-        <h3 v-rainbow>{{ post.title }}</h3>
-        <p>{{ post.body }}</p>
+        <h3 v-rainbow>{{ post.title | toUpperCase }}</h3>
+        <p>{{ post.body | snippet }}</p>
       </li>
     </ul>
   </div>
