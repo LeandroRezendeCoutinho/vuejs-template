@@ -1,8 +1,9 @@
 <template>
   <div v-theme:column="'wide'" id="show-blogs">
     <h2>All Blog Posts</h2>
+    <input type="text" v-model="search" placeholder="Search posts..." />
     <ul>
-      <li v-for="post in posts.slice(0, 3)" :key="post.id">
+      <li v-for="post in filteredPosts" :key="post.id">
         <h3 v-rainbow>{{ post.title | toUpperCase }}</h3>
         <p>{{ post.body | snippet }}</p>
       </li>
@@ -11,10 +12,12 @@
 </template>
 
 <script>
+
 export default {
   data() {
     return {
-      posts: []
+      posts: [],
+      search: ''
     }
   },
   created() {
@@ -29,6 +32,13 @@ export default {
         .catch(error => {
           console.error('Error fetching blog posts:', error);
         });
+    }
+  },
+  computed: {
+    filteredPosts: function () {
+      return this.posts.filter(post => {
+        return post.title.match(this.search);
+      });
     }
   }
 }
