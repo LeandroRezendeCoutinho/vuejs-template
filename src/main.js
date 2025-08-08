@@ -26,10 +26,6 @@ Vue.directive('theme', {
 })
 
 // Filters
-Vue.filter('toUpperCase', function (value) {
-  return value.toUpperCase()
-})
-
 Vue.filter('snippet', function (value) {
   return value.slice(0, 100) + '...'
 })

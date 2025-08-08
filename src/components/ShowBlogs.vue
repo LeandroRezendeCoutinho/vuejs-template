@@ -40,6 +40,11 @@ export default {
         return post.title.match(this.search);
       });
     }
+  },
+  filters: {
+    toUpperCase(value) {
+      return value.toUpperCase()
+    }
   }
 }
 </script>
