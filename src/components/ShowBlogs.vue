@@ -12,6 +12,7 @@
 </template>
 
 <script>
+import searchMixin from '../mixins/searchMixin';
 
 export default {
   data() {
@@ -35,11 +36,6 @@ export default {
     }
   },
   computed: {
-    filteredPosts: function () {
-      return this.posts.filter(post => {
-        return post.title.match(this.search);
-      });
-    }
   },
   filters: {
     toUpperCase(value) {
@@ -52,7 +48,8 @@ export default {
         el.style.color = '#' + Math.random().toString().slice(2, 8)
       }
     }
-  }
+  },
+  mixins: [searchMixin]
 }
 </script>
 
