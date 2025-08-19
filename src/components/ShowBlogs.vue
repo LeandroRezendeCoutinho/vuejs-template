@@ -4,7 +4,9 @@
     <input type="text" v-model="search" placeholder="Search posts..." />
     <ul>
       <li v-for="post in filteredPosts" :key="post.id">
-        <h3 v-rainbow>{{ post.title | toUpperCase }}</h3>
+        <router-link :to="'/blog/' + post.id">
+          <h3>{{ post.title | toUpperCase }}</h3>
+        </router-link>
         <p>{{ post.body | snippet }}</p>
       </li>
     </ul>
