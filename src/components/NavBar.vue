@@ -2,13 +2,13 @@
     <nav>
         <ul>
             <li>
-                <router-link to="/">Home</router-link>
+                <router-link to="/" exact>Home</router-link>
             </li>
             <li>
-                <router-link to="/blogs">Blogs</router-link>
+                <router-link to="/blogs" exact>Blogs</router-link>
             </li>
             <li>
-                <router-link to="/add">Add</router-link>
+                <router-link to="/add" exact>Add</router-link>
             </li>
         </ul>
     </nav>
