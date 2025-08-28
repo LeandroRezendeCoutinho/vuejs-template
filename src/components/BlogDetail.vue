@@ -1,7 +1,11 @@
 <template>
   <div id="detail">
     <h2>{{ blogPost.title }}</h2>
-    <article>{{ blogPost.body }}</article>
+    <article>{{ blogPost.content }}</article>
+    <p>Author: {{ blogPost.author }}</p>
+    <ul>
+      <li v-for="category in blogPost.categories" :key="category">{{ category }}</li>
+    </ul>
   </div>
 </template>
 
@@ -14,9 +18,12 @@ export default {
     }
   },
   created() {
-    this.$http.get(`https://jsonplaceholder.typicode.com/posts/${this.id}`)
+    this.$http.get(`https://vuejs-templatedb-default-rtdb.firebaseio.com/posts/${this.id}.json`)
       .then(response => {
-        this.blogPost = response.body;
+        return response.json();
+      })
+      .then(function (data) {
+        this.blogPost = data;
       })
       .catch(error => {
         console.error('Error fetching blog post:', error);

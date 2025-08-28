@@ -7,7 +7,7 @@
         <router-link :to="'/blog/' + post.id">
           <h3>{{ post.title | toUpperCase }}</h3>
         </router-link>
-        <p>{{ post.body | snippet }}</p>
+        <p>{{ post.content | snippet }}</p>
       </li>
     </ul>
   </div>
@@ -28,9 +28,16 @@ export default {
   },
   methods: {
     fetchPosts() {
-      this.$http.get('https://jsonplaceholder.typicode.com/posts')
-        .then(response => {
-          this.posts = response.data;
+      this.$http.get('https://vuejs-templatedb-default-rtdb.firebaseio.com/posts.json')
+        .then(data => {
+          return data.json();
+        }).then(function (data) {
+          let postsArray = []
+          for (let key in data) {
+            data[key].id = key
+            postsArray.push(data[key])
+          }
+          this.posts = postsArray
         })
         .catch(error => {
           console.error('Error fetching blog posts:', error);
